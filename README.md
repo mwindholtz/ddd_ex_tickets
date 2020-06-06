@@ -12,7 +12,7 @@ All tickets will be priced at $100/seat
 
 #### Backlog
 
-- [_] As a Ticket Shopper, I want to see the number of tickets available.
+- [X] As a Ticket Shopper, I want to see the number of tickets available.
 - [_] As a Ticket Shopper, I want to increment / decrement the number of tickets in my cart.
 - [_] As a Ticket Shopper, I want to see the number of tickets available.
 
