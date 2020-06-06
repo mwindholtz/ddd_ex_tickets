@@ -47,7 +47,7 @@ defmodule DddExTickets.Warehouse.Venue do
 
   # Client Interface -----------------------------
   def reserve_seat do
-    :ok
+    GenServer.call(__MODULE__, :reserve_seat)
   end
 
   def available do
@@ -61,5 +61,10 @@ defmodule DddExTickets.Warehouse.Venue do
     venue = %DddExTickets.Warehouse.Venue{}
     reply_value = venue.available |> Enum.count()
     {:reply, reply_value, state}
+  end
+
+  @impl true
+  def handle_call(:reserve_seat, _from, %Venue{} = state) do
+    {:reply, :ok, state}
   end
 end
