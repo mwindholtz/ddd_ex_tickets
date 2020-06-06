@@ -6,9 +6,9 @@ Mauro Servienti: [All Our Aggregates Are Wrong ](https://www.youtube.com/watch?v
 
 ## Stories
 ##### For Minimal Viable Product (MVP)
-There will the only show available in the system.
-The number of tickets is set at 30
-All tickets will be priced at $100/seat
+- There will be only one show available in the system.
+- The number of tickets is set at 30
+- All tickets will be priced at $100/seat
 
 #### Backlog
 
