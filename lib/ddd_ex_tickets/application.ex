@@ -4,6 +4,7 @@ defmodule DddExTickets.Application do
   @moduledoc false
 
   use Application
+  alias DddExTickets.Warehouse.Venue
 
   def start(_type, _args) do
     children = [
@@ -12,9 +13,10 @@ defmodule DddExTickets.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: DddExTickets.PubSub},
       # Start the Endpoint (http/https)
-      DddExTicketsWeb.Endpoint
+      DddExTicketsWeb.Endpoint,
       # Start a worker by calling: DddExTickets.Worker.start_link(arg)
       # {DddExTickets.Worker, arg}
+      {Venue, %Venue{}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
