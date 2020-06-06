@@ -3,14 +3,14 @@
 
 <section class="phx-hero">
   <h1>Tickets Requested</h1>
-  <form phx-change="suggest" phx-submit="search">
-    <input type="text" name="q" value="<%= @query %>" placeholder="Number of Tickets" list="results" autocomplete="off"/>
+  <form phx-submit="request">
+    <input type="text" name="tickets_requested" value="<%= @tickets_requested %>" placeholder="Number of Tickets" list="results" autocomplete="off"/>
     <datalist id="results">
       <%= for {app, _vsn} <- @results do %>
         <option value="<%= app %>"><%= app %></option>
       <% end %>
     </datalist>
-    <button type="submit" phx-disable-with="Searching...">Change Ticket Count</button>
+    <button type="submit" phx-disable-with="Updating...">Change Ticket Count</button>
   </form>
 </section>
 
