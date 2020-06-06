@@ -3,7 +3,7 @@ defmodule DddExTicketsWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+    {:ok, assign(socket, query: "", results: %{}, remaining_count: 30)}
   end
 
   @impl true
