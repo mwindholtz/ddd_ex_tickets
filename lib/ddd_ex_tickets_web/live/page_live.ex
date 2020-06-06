@@ -3,7 +3,8 @@ defmodule DddExTicketsWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{}, remaining_count: 30)}
+    venue = %DddExTickets.Warehouse.Venue{}
+    {:ok, assign(socket, query: "", results: %{}, remaining_count: venue.available)}
   end
 
   @impl true
