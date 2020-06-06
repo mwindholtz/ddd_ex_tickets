@@ -10,10 +10,10 @@ use Mix.Config
 # Configures the endpoint
 config :ddd_ex_tickets, DddExTicketsWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "psKkvqHh1CVtm65iDbAvN+BFTGoq75eimCE0leSAf48Crq7R/0pVXh+o/YMNCCNX",
+  secret_key_base: "nJqm7e7lkhy/QlVsSISCM4SeJ8ExgrGfT6q8D8UrIWKaMpqpVnLYv/SxF7WA5t5P",
   render_errors: [view: DddExTicketsWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: DddExTickets.PubSub,
-  live_view: [signing_salt: "0CmK+h1s"]
+  live_view: [signing_salt: "7pkz08Fe"]
 
 # Configures Elixir's Logger
 config :logger, :console,

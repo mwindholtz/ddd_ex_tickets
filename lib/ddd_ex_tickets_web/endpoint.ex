@@ -7,7 +7,7 @@ defmodule DddExTicketsWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_ddd_ex_tickets_key",
-    signing_salt: "DwtI7TRC"
+    signing_salt: "5ogJi+ZB"
   ]
 
   socket "/socket", DddExTicketsWeb.UserSocket,
