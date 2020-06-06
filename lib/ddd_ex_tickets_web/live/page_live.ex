@@ -1,10 +1,11 @@
 defmodule DddExTicketsWeb.PageLive do
   use DddExTicketsWeb, :live_view
+  alias DddExTickets.Warehouse.Venue
 
   @impl true
   def mount(_params, _session, socket) do
-    venue = %DddExTickets.Warehouse.Venue{}
-    {:ok, assign(socket, query: "", results: %{}, remaining_count: venue.available)}
+    available = Venue.available()
+    {:ok, assign(socket, query: "", results: %{}, remaining_count: available)}
   end
 
   @impl true
