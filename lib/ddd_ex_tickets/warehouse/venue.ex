@@ -2,7 +2,39 @@ defmodule DddExTickets.Warehouse.Venue do
   use GenServer
 
   alias DddExTickets.Warehouse.Venue
-  defstruct available: 30
+
+  defstruct available: [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30
+            ]
 
   def start_link(state \\ %Venue{}) do
     GenServer.start_link(__MODULE__, state, name: __MODULE__)
@@ -24,9 +56,10 @@ defmodule DddExTickets.Warehouse.Venue do
 
   # Server Interface ---------------------
 
+  @impl true
   def handle_call(:available, _from, %Venue{} = state) do
     venue = %DddExTickets.Warehouse.Venue{}
-    reply_value = venue.available
+    reply_value = venue.available |> Enum.count()
     {:reply, reply_value, state}
   end
 end
