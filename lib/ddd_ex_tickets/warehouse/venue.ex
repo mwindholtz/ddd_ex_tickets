@@ -3,7 +3,6 @@ defmodule DddExTickets.Warehouse.Venue do
 
   alias DddExTickets.Warehouse.Venue
   defstruct available: 30
-  @impl true
 
   def start_link(state \\ %Venue{}) do
     GenServer.start_link(__MODULE__, state, name: __MODULE__)
@@ -14,12 +13,20 @@ defmodule DddExTickets.Warehouse.Venue do
     {:ok, venue}
   end
 
+  # Client Interface -----------------------------
   def reserve_seat do
     :ok
   end
 
   def available do
+    GenServer.call(__MODULE__, :available)
+  end
+
+  # Server Interface ---------------------
+
+  def handle_call(:available, _from, %Venue{} = state) do
     venue = %DddExTickets.Warehouse.Venue{}
-    venue.available
+    reply_value = venue.available
+    {:reply, reply_value, state}
   end
 end

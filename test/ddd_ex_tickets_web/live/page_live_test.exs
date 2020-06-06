@@ -13,7 +13,7 @@ defmodule DddExTicketsWeb.PageLiveTest do
   @tag :skip
   test "reserve a ticket and see 29 remaining", %{conn: conn} do
     DddExTickets.Warehouse.Venue.reserve_seat()
-    {:ok, page_live, disconnected_html} = live(conn, "/")
+    {:ok, page_live, _disconnected_html} = live(conn, "/")
     assert render(page_live) =~ "Remaining: 29"
   end
 end
