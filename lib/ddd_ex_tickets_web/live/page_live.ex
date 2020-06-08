@@ -16,12 +16,14 @@ defmodule DddExTicketsWeb.PageLive do
   end
 
   @impl true
-  def handle_event("request", %{"tickets_requested" => tickets_requested}, socket) do
-    {:noreply, assign(socket, tickets_requested: tickets_requested)}
+  def handle_event("request", %{"tickets_requested" => _tickets_requested}, socket) do
+    Venue.reserve_seat()
+    {:noreply, socket}
   end
 
   @impl true
   def handle_info(%DomainEvent{name: :venue_changed}, state) do
+    IO.inspect(state, label: "%DomainEvent{name: :venue_changed}")
     available = Venue.available()
 
     new_state =

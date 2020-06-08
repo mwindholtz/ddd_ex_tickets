@@ -22,7 +22,6 @@ defmodule DddExTicketsWeb.PageLiveTest do
   end
 
   test "reserve a ticket and see 29 remaining", %{conn: conn} do
-    conn = assign(conn, :venue_pid, DddExTickets.Warehouse.Venue)
     DddExTickets.Warehouse.Venue.reserve_seat()
     {:ok, page_live, _disconnected_html} = live(conn, "/")
     assert render(page_live) =~ "Remaining: 29"
