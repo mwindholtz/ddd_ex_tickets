@@ -11,11 +11,7 @@ defmodule DddExTicketsWeb.PageLive do
   @impl true
   def mount(_params, _session, socket) do
     :ok = EventBus.subscribe()
-    available = Venue.available()
-    reserved_seats = Venue.reserved_seats()
-
-    {:ok,
-     assign(socket, tickets_requested: 0, results: reserved_seats, remaining_count: available)}
+    {:ok, refresh(socket)}
   end
 
   @impl true
@@ -33,11 +29,12 @@ defmodule DddExTicketsWeb.PageLive do
   # DomainEvents -------------------------------------------------------------------------
   @impl true
   def handle_info(%DomainEvent{name: :venue_changed}, state) do
-    new_state =
-      state
-      |> assign(remaining_count: Venue.available())
-      |> assign(results: Venue.reserved_seats())
+    {:noreply, refresh(state)}
+  end
 
-    {:noreply, new_state}
+  defp refresh(state) do
+    state
+    |> assign(remaining_count: Venue.available())
+    |> assign(results: Venue.reserved_seats())
   end
 end
