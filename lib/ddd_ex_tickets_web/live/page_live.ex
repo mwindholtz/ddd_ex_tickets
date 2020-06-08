@@ -24,6 +24,7 @@ defmodule DddExTicketsWeb.PageLive do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_event("dec", _params, socket) do
     Venue.release_seat()
     {:noreply, socket}
@@ -31,7 +32,6 @@ defmodule DddExTicketsWeb.PageLive do
 
   @impl true
   def handle_info(%DomainEvent{name: :venue_changed}, state) do
-    IO.inspect(state, label: "%DomainEvent{name: :venue_changed}")
     available = Venue.available()
     reserved_seats = Venue.reserved_seats()
 
