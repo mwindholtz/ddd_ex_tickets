@@ -30,15 +30,13 @@ defmodule DddExTicketsWeb.PageLive do
     {:noreply, socket}
   end
 
+  # DomainEvents -------------------------------------------------------------------------
   @impl true
   def handle_info(%DomainEvent{name: :venue_changed}, state) do
-    available = Venue.available()
-    reserved_seats = Venue.reserved_seats()
-
     new_state =
       state
-      |> assign(remaining_count: available)
-      |> assign(results: reserved_seats)
+      |> assign(remaining_count: Venue.available())
+      |> assign(results: Venue.reserved_seats())
 
     {:noreply, new_state}
   end

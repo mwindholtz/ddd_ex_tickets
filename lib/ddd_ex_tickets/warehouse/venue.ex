@@ -18,7 +18,7 @@ defmodule DddExTickets.Warehouse.Venue do
     {:ok, venue}
   end
 
-  # Client Interface -----------------------------
+  # Commands -----------------------------
   def reserve_seat do
     GenServer.call(__MODULE__, :reserve_seat)
   end
