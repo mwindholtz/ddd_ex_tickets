@@ -16,6 +16,7 @@ Mauro Servienti: [All Our Aggregates Are Wrong ](https://www.youtube.com/watch?v
 - [X] As a Ticket Shopper, I want to increment / decrement the number of tickets in my cart.
 - [X] As a Ticket Shopper, I want to see the number of tickets available after reserving one.
 - [X] As a Ticket Shopper, I want to see my ticket numbers.
+- [.] As a Ticket Shopper, I want to see price total with 10% event tax.
 
 
 #### Vision
