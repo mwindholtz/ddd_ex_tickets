@@ -26,11 +26,13 @@ defmodule DddExTicketsWeb.PageLive do
     {:noreply, socket}
   end
 
-  # DomainEvents -------------------------------------------------------------------------
+  # DomainEvents -----------------------------------------------------
   @impl true
   def handle_info(%DomainEvent{name: :venue_changed}, state) do
     {:noreply, refresh(state)}
   end
+
+  # Private Implementation -------------------------------------------
 
   defp refresh(state) do
     state
