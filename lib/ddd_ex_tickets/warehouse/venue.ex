@@ -2,8 +2,10 @@ defmodule DddExTickets.Warehouse.Venue do
   use GenServer
 
   alias DddExTickets.Warehouse.Venue
+  alias DddExTickets.EventBus
+  alias DddExTickets.DomainEvent
 
-  defstruct available: 1..30
+  defstruct available: 1..30 |> Enum.to_list()
 
   def start_link(state \\ %Venue{}) do
     GenServer.start_link(__MODULE__, state, name: __MODULE__)
@@ -26,14 +28,18 @@ defmodule DddExTickets.Warehouse.Venue do
   # Server Interface ---------------------
 
   @impl true
-  def handle_call(:available, _from, %Venue{} = state) do
-    venue = %DddExTickets.Warehouse.Venue{}
-    reply_value = venue.available |> Enum.count()
+  def handle_call(:available, _from, %Venue{available: available} = state) do
+    reply_value = available |> Enum.count()
     {:reply, reply_value, state}
   end
 
   @impl true
-  def handle_call(:reserve_seat, _from, %Venue{} = state) do
+  def handle_call(:reserve_seat, _from, %Venue{available: available} = state) do
+    %DomainEvent{name: :venue_changed}
+    |> EventBus.publish()
+
+    [_first | available] = available
+    state = %{state | available: available}
     {:reply, :ok, state}
   end
 end
