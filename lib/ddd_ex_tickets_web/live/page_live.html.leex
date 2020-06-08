@@ -1,5 +1,13 @@
-  <h1><%= gettext "Welcome to %{name}!", name: "DddExTickets" %></h1>
-  <p>Simple Example of DDD Bounded Contexts and Aggregates implemented in Phoenix LiveView</p>
+<h1><%= gettext "Welcome to %{name}!", name: "DddExTickets" %></h1>
+<p>Simple Example of DDD Bounded Contexts and Aggregates implemented in Phoenix LiveView</p>
+
+<section class="phx-hero">
+  <h1>Tickets</h1>
+  <div>
+    <h1>Remaining: <%= @remaining_count %></h1>
+  </div>
+</section>
+
 
 <section class="phx-hero">
   <h1>Tickets Requested</h1>
@@ -11,17 +19,6 @@
         <li style="list-style-type:none"><%= seat_num %></li>
       <% end %>
     </ul>
-  </div>
-
-
-
-</section>
-
-
-<section class="phx-hero">
-  <h1>Tickets</h1>
-  <div>
-    <h1>Remaining: <%= @remaining_count %></h1>
   </div>
 </section>
 

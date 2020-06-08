@@ -58,4 +58,18 @@ defmodule DddExTickets.Warehouse.Venue do
     state = %{state | available: available, reserved: reserved}
     {:reply, :ok, state}
   end
+
+  def handle_call(
+        :release_seat,
+        _from,
+        %Venue{available: available, reserved: reserved} = state
+      ) do
+    %DomainEvent{name: :venue_changed}
+    |> EventBus.publish()
+
+    [released_seat | reserved] = reserved
+    available = [released_seat | available]
+    state = %{state | available: available, reserved: reserved}
+    {:reply, :ok, state}
+  end
 end
