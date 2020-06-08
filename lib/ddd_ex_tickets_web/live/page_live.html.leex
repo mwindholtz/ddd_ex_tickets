@@ -6,7 +6,15 @@
   <div>
     <button phx-click="dec">-</button>
     <button phx-click="inc">+</button>
+    <ul>
+      <%= for seat_num <- @results do %>
+        <li style="list-style-type:none"><%= seat_num %></li>
+      <% end %>
+    </ul>
   </div>
+
+
+
 </section>
 
 

@@ -5,7 +5,9 @@ defmodule DddExTickets.Warehouse.Venue do
   alias DddExTickets.EventBus
   alias DddExTickets.DomainEvent
 
-  defstruct available: 1..30 |> Enum.to_list(), reserved: []
+  @default_seats 1..30 |> Enum.to_list()
+
+  defstruct available: @default_seats, reserved: []
 
   def start_link(state \\ %Venue{}) do
     GenServer.start_link(__MODULE__, state, name: __MODULE__)
