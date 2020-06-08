@@ -23,6 +23,10 @@ defmodule DddExTickets.Warehouse.Venue do
     GenServer.call(__MODULE__, :reserve_seat)
   end
 
+  def release_seat do
+    GenServer.call(__MODULE__, :release_seat)
+  end
+
   def available do
     GenServer.call(__MODULE__, :available)
   end
