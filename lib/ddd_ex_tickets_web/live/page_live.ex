@@ -16,7 +16,12 @@ defmodule DddExTicketsWeb.PageLive do
   end
 
   @impl true
-  def handle_event("request", %{"tickets_requested" => _tickets_requested}, socket) do
+  def handle_event("inc", _params, socket) do
+    Venue.reserve_seat()
+    {:noreply, socket}
+  end
+
+  def handle_event("dec", _params, socket) do
     Venue.reserve_seat()
     {:noreply, socket}
   end

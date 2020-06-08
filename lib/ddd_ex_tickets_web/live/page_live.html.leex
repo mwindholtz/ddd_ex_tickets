@@ -3,22 +3,20 @@
 
 <section class="phx-hero">
   <h1>Tickets Requested</h1>
-  <form phx-submit="request">
-    <input type="text" name="tickets_requested" value="<%= @tickets_requested %>" placeholder="Number of Tickets" list="results" autocomplete="off"/>
-    <datalist id="results">
-      <%= for {app, _vsn} <- @results do %>
-        <option value="<%= app %>"><%= app %></option>
-      <% end %>
-    </datalist>
-    <button type="submit" phx-disable-with="Updating...">Change Ticket Count</button>
-  </form>
+  <div>
+    <button phx-click="dec">-</button>
+    <button phx-click="inc">+</button>
+  </div>
 </section>
 
 
 <section class="phx-hero">
-  <h1>Tickets</h1>
-  <h2>Remaining: <%= @remaining_count %></h2>
+  <h1>Tickets Remaining</h1>
+  <div>
+    <h1><%= @remaining_count %></h1>
+  </div>
 </section>
+
 
 
 <section class="row">
