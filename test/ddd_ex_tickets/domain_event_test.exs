@@ -1,6 +1,6 @@
-defmodule DddExTicket.DomainEventTest do
+defmodule DddExTickets.DomainEventTest do
   use DddExTickets.DomainCase
-  alias DddExTicket.DomainEvent
+  alias DddExTickets.DomainEvent
 
   test "new" do
     # When

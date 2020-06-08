@@ -1,5 +1,5 @@
-defmodule DddExTicket.DomainEvent do
-  alias DddExTicket.DomainEvent
+defmodule DddExTickets.DomainEvent do
+  alias DddExTickets.DomainEvent
 
   defstruct name: nil
 
