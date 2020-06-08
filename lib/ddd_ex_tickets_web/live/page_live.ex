@@ -12,9 +12,10 @@ defmodule DddExTicketsWeb.PageLive do
   def mount(_params, _session, socket) do
     :ok = EventBus.subscribe()
     available = Venue.available()
-    results = Venue.reserved_seats()
-    socket = assign(socket, results: results)
-    {:ok, assign(socket, tickets_requested: 0, results: [], remaining_count: available)}
+    reserved_seats = Venue.reserved_seats()
+
+    {:ok,
+     assign(socket, tickets_requested: 0, results: reserved_seats, remaining_count: available)}
   end
 
   @impl true
