@@ -12,4 +12,13 @@ defmodule DddExTickets.Warehouse.VenueTest do
     assert state.available == [2, 3]
     assert state.reserved == [1]
   end
+
+  test "handle_call(:reserved_seats" do
+    reserved = [1, 2, 3]
+    state = %Venue{reserved: reserved}
+
+    {:reply, ^reserved, state} = Venue.handle_call(:reserved_seats, self(), state)
+
+    assert state.reserved == reserved
+  end
 end

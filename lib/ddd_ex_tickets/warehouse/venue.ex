@@ -34,6 +34,11 @@ defmodule DddExTickets.Warehouse.Venue do
   end
 
   @impl true
+  def handle_call(:reserved_seats, _from, %Venue{reserved: reserved} = state) do
+    {:reply, reserved, state}
+  end
+
+  @impl true
   def handle_call(
         :reserve_seat,
         _from,
