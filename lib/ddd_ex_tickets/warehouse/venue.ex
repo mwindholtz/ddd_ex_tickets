@@ -5,7 +5,7 @@ defmodule DddExTickets.Warehouse.Venue do
   alias DddExTickets.EventBus
   alias DddExTickets.DomainEvent
 
-  defstruct available: 1..30 |> Enum.to_list()
+  defstruct available: 1..30 |> Enum.to_list(), reserved: []
 
   def start_link(state \\ %Venue{}) do
     GenServer.start_link(__MODULE__, state, name: __MODULE__)
@@ -34,12 +34,17 @@ defmodule DddExTickets.Warehouse.Venue do
   end
 
   @impl true
-  def handle_call(:reserve_seat, _from, %Venue{available: available} = state) do
+  def handle_call(
+        :reserve_seat,
+        _from,
+        %Venue{available: available, reserved: reserved} = state
+      ) do
     %DomainEvent{name: :venue_changed}
     |> EventBus.publish()
 
-    [_first | available] = available
-    state = %{state | available: available}
+    [reserved_seat | available] = available
+    reserved = [reserved_seat | reserved]
+    state = %{state | available: available, reserved: reserved}
     {:reply, :ok, state}
   end
 end
