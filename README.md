@@ -18,6 +18,12 @@ Mauro Servienti: [All Our Aggregates Are Wrong ](https://www.youtube.com/watch?v
 - [X] As a Ticket Shopper, I want to see my ticket numbers.
 
 
+#### Vision
+- Aggregates using Eventual Consistency
+- Sales sets the price, Venue assigns the tickets.
+- Sales listens to changes in Venue and updates price
+- ** Needs to have a rollback senario, to show event sourceing
+
 To start your Phoenix server:
 
   * Setup the project with `mix setup`
