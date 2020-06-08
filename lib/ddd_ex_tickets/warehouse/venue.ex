@@ -25,6 +25,10 @@ defmodule DddExTickets.Warehouse.Venue do
     GenServer.call(__MODULE__, :available)
   end
 
+  def reserved_seats do
+    GenServer.call(__MODULE__, :reserved_seats)
+  end
+
   # Server Interface ---------------------
 
   @impl true
