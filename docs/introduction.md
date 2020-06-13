@@ -90,7 +90,7 @@ Aggregates can be implemented with Elixir GenServers.
 In the **DddExTickets** example [Venue](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/warehouse/venue.ex) is an Aggregate that mananges the allocation of Seat ValueObjects.
 
 #### DomainEvent
-A DomainEvent is and event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available***
+A [DomainEvent](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/domain_event.ex) is and event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available**
 
 ### Communication Techniques: sharing and understanding what is imporantant.
 DDD has various techniques to help Domain Experts and Technical team communicate and collaborate in building the Model.  This incelude:  **Event Storming**, and **WhirlPooling**, among others.
@@ -99,3 +99,7 @@ DDD has various techniques to help Domain Experts and Technical team communicate
 1. Communication between DomainExperts and Developers
 1. Iterative Development
 1. Ubiqutious Language
+
+
+## Next
+Next lets look at a code example of putting some of these ideas together.
