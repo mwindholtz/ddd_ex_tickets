@@ -4,7 +4,7 @@ defmodule DddExTickets.EventBusTest do
   alias DddExTickets.DomainEvent
 
   test "subscribe, publish, receive event" do
-    domain_event = DomainEvent.new("ping")
+    domain_event = DomainEvent.venue_changed()
     :ok = EventBus.subscribe()
 
     # When

@@ -80,7 +80,7 @@ defmodule DddExTickets.Warehouse.Venue do
   # ------- Implementation
 
   defp publish_venue_changed() do
-    %DomainEvent{name: :venue_changed}
+    DomainEvent.venue_changed()
     |> EventBus.publish()
   end
 
