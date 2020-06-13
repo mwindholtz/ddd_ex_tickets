@@ -3,7 +3,11 @@ defmodule DddExTickets.DomainEvent do
 
   defstruct name: nil
 
-  def new(name) do
+  defp new(name) do
     %DomainEvent{name: name}
+  end
+
+  def venue_changed do
+    %DomainEvent{name: :venue_changed}
   end
 end
