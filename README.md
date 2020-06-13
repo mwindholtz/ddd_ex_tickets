@@ -10,13 +10,14 @@ Mauro Servienti: [All Our Aggregates Are Wrong ](https://www.youtube.com/watch?v
 - The number of tickets is set at 30
 - All tickets will be priced at $100/seat
 
-#### Backlog
+##### Iteration 001
+- Create an Aggregate for **Venue** to manage the seats of one show at one venue
 
-- [X] s  As a Ticket Shopper, I want to see the number of tickets available.
-- [X] As a Ticket Shopper, I want to increment / decrement the number of tickets in my cart.
-- [X] As a Ticket Shopper, I want to see the number of tickets available after reserving one.
-- [X] As a Ticket Shopper, I want to see my ticket numbers.
-- [.] As a Ticket Shopper, I want to see price total with 10% event tax.
+##### Iteration 002
+- Create a second Aggregate for **SaleTransaction** to calculate the cost
+
+##### Iteration 003
+- Allow a transaction to be rolled back without central synconization
 
 
 #### Vision
@@ -31,13 +32,3 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix

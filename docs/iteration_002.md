@@ -1,5 +1,6 @@
+# Iteration 002
 
- Iteration 002
+Adds a second independent Aggregate:  SalesTransation
 
 ## Stories
-Blank for now
+- As a Ticket Shopper, I want to see price total with 10% event tax.
