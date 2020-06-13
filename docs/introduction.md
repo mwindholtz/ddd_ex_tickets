@@ -39,12 +39,58 @@ I recommend building a small application with DDD patterns, in order to learn.  
 Lacking a useful Domain Model has some of the following symptoms.
 
 #### Symptoms of poor a Domain Model
-- Code delivery becoming slower
+- Slowing Code delivery
 - Unacceptable code defects
 - Large, awkward setup code for unit tests
 - Long running unit tests.  Greater than > 5 minutes (Elixir is fast and concurrent, so tests should be fast)
 
-A weak point of some Agile software processes is that they encourage a style of feature based development that layers features on top of features without looking into the deeper core of the problem space.  I call this **Featuritus**.   Getting the most points done per interation without continually developing the core leads to confusion.
+A weak point of some Agile software processes is that they encourage a style of feature based development that layers features on top of features without looking into the deeper core of the problem space.  This is called **Featuritus**.   Getting the most points done per interation without continually developing the core leads to confusion.
 
 It is simpler to understand business constraints and rules when they are in the core domain model than to handle them on the edges in feature code.
 It is faster in the *short term* to *build* one feature at a time, and to build the rules and constraints in one feature at a time.  But this leaves duplicate concepts and hard to locate logic around the edges of the application.
+
+## Parts of DDD
+### Stratigic Patterns
+These patterns help organize large scale parts of a complecated domain.
+We want to highlight when we are dealing with the **Problem Space** and when we are dealing with the **Solution Space**
+
+#### Core Domain, Sub-Domain
+The an area in the **Problem Space**.  A sphere of the knowledge ....
+The *Core Domain* is the most important part of the problem we are trying to solve.
+ Examples could be areas like: TicketSales Domain, SeatAllocation SubDomain, and Billing SubDomain
+
+#### Bounded Context
+The Bounded Context is in the **Solution Space**.  We name modeling concepts within a particular *Bounded Context*.  We often see these align with the departments in a company. Example Bounded Contexts: Sales, Warehousing, and Billing
+
+#### Context Map
+A Context Map will show the relationships between Bounded Contexts.  This helps us undersand flow of Model changes among the connected Bounded Conexts.
+
+#### Ubiqutious Language
+**Ubiqutious Language** is a language that we define.  We use words that the domain Expert uses in the Problem Space and define those worked to mean something percise within the area of the BoundedContext.
+In an insurance application for example, the concept *Policy* may mean different things to different departments.  Each department should define *Policy* within it's own BoundedContext.
+Words defined in the Ubiqutious Language should be directly represented in the structs and functions of our Elixir code.  That is why we cann it *"Ubiqutious"*.   The names of these things are in the Domain and in the code.   And yes, this takes some skill development to do well.  The tactical patterns are helpful for this.
+
+### Tactical Patterns
+The Tactical Patterns is where the Model meets the Code.  Tactical patterns are how we can make the Ubiqutious Language show up in our code modeuls and functions.
+
+#### Value Object
+ValueObject is immutable data the value of which is only set during construction, like a DateTime.  This is more helpful in an Object Oriented language, since in Elixir all data structures are immutable.
+
+#### Entity
+An Entity is longer lived data that has an identity, and can change it's properties over time.
+An Entity in Elixir would be data that lives in a Database, and can be changed in the DB as needed.
+It would be a Struct with an *Ecto Schema*
+
+#### Aggrigate
+An Aggrigate is one Entity, or a tree of Entities with one at the root.  The root is called the AggrigateRoot.   The AggrigateRoot is the ony interface into the Aggrigate and maintains transactions so that the Aggrigate internals are always consistent and valid.
+
+#### DomainEvent
+A DomainEvent is and event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available***
+
+### Communication Techniques: sharing and understanding what is imporantant.
+DDD has various techniques to help Domain Experts and Technical team communicate and collaborate in building the Model.  This incelude:  **Event Storming**, and **WhirlPooling**, among others.
+
+### Vision and Values: Help in times of stress.
+1. Communication between DomainExperts and Developers
+1. Iterative Development
+1. Ubiqutious Language
