@@ -102,4 +102,5 @@ DDD has various techniques to help Domain Experts and Technical team communicate
 
 
 ## Next
-Next lets look at a code example of putting some of these ideas together.
+Next we look at a code example of putting some of these ideas together.
+[iteration_001](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/docs/iteration_001.md)
