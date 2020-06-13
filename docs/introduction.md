@@ -81,8 +81,13 @@ An Entity is longer lived data that has an identity, and can change it's propert
 An Entity in Elixir would be data that lives in a Database, and can be changed in the DB as needed.
 It would be a Struct with an *Ecto Schema*
 
-#### Aggrigate
-An Aggrigate is one Entity, or a tree of Entities with one at the root.  The root is called the AggrigateRoot.   The AggrigateRoot is the ony interface into the Aggrigate and maintains transactions so that the Aggrigate internals are always consistent and valid.
+#### Aggregate
+An Aggregate is one Entity, or a tree of Entities with one at the root.  The root is called the AggregateRoot.   The AggregateRoot is the ony interface into the Aggregate and maintains transactions so that the Aggregate internals are always consistent and valid.
+
+Much of DDD modeling deals with finding, and naming Aggregates and decoupling Aggregates from each other.
+This is key to robustness and scalability.
+Aggregates can be implemented with Elixir GenServers.
+In the **DddExTickets** example [Venue](https://github.com/mwindholtz/ddd_ex_tickets/blob/master/lib/ddd_ex_tickets/warehouse/venue.ex) is an Aggregate that mananges the allocation of Seat ValueObjects.
 
 #### DomainEvent
 A DomainEvent is and event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available***
