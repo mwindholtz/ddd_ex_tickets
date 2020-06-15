@@ -50,6 +50,13 @@ defmodule DddExTicketsWeb.PageLiveTest do
     assert socket.assigns == %{remaining_count: 30, results: []}
   end
 
+  test "ignore: handle_info(%DomainEvent{name: :other}" do
+    socket = %Phoenix.LiveView.Socket{}
+    domain_event = %DomainEvent{name: :ignore}
+
+    assert {:noreply, socket} = PageLive.handle_info(domain_event, socket)
+  end
+
   defp wait_for_venue_to_restart do
     case Process.whereis(Venue) do
       nil ->

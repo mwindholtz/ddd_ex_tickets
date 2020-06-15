@@ -37,6 +37,11 @@ defmodule DddExTicketsWeb.PageLive do
     {:noreply, refresh(socket)}
   end
 
+  @impl true
+  def handle_info(%DomainEvent{name: _ignore_other}, socket) do
+    {:noreply, socket}
+  end
+
   # Private Implementation -------------------------------------------
 
   defp refresh(socket) do
