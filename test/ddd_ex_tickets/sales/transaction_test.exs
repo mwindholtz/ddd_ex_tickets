@@ -34,6 +34,7 @@ defmodule DddExTickets.Sales.TransactionTest do
       state = %Transaction{}
       domain_event = %DomainEvent{name: :ignore}
       assert {:noreply, ^state} = Transaction.handle_info(domain_event, state)
+      refute_receive %DomainEvent{name: :price_changed}
     end
   end
 end
