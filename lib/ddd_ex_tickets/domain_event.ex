@@ -14,4 +14,8 @@ defmodule DddExTickets.DomainEvent do
   def seat_reserved do
     new(:seat_reserved)
   end
+
+  def seat_released do
+    new(:seat_released)
+  end
 end

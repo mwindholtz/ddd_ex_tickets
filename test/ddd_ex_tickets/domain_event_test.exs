@@ -15,4 +15,11 @@ defmodule DddExTickets.DomainEventTest do
     assert %DomainEvent{} = result
     assert result.name == :seat_reserved
   end
+
+  test "seat_released" do
+    # When
+    result = DomainEvent.seat_released()
+    assert %DomainEvent{} = result
+    assert result.name == :seat_released
+  end
 end
