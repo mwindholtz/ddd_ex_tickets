@@ -38,6 +38,15 @@ defmodule DddExTicketsWeb.PageLive do
   end
 
   @impl true
+  def handle_info(%DomainEvent{name: :price_changed, content: new_price_in_cents}, socket) do
+    socket =
+      socket
+      |> assign(:price_in_cents, new_price_in_cents)
+
+    {:noreply, socket}
+  end
+
+  @impl true
   def handle_info(%DomainEvent{name: _ignore_other}, socket) do
     {:noreply, socket}
   end

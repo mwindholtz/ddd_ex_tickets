@@ -50,6 +50,14 @@ defmodule DddExTicketsWeb.PageLiveTest do
     assert socket.assigns == %{remaining_count: 30, results: []}
   end
 
+  test "handle_info(%DomainEvent{name: :price_changed}" do
+    socket = %Phoenix.LiveView.Socket{}
+    domain_event = DomainEvent.price_changed(10_000)
+
+    assert {:noreply, socket} = PageLive.handle_info(domain_event, socket)
+    assert socket.assigns == %{price_in_cents: 10_000}
+  end
+
   test "ignore: handle_info(%DomainEvent{name: :other}" do
     socket = %Phoenix.LiveView.Socket{}
     domain_event = %DomainEvent{name: :ignore}
