@@ -27,6 +27,7 @@ defmodule DddExTickets.Sales.Transaction do
   @impl true
   def handle_info(%DomainEvent{name: :seat_reserved}, state) do
     state = add_seat(state)
+    publish_price_changed(state.price_in_cents)
     {:noreply, state}
   end
 
@@ -51,8 +52,8 @@ defmodule DddExTickets.Sales.Transaction do
     %{state | price_in_cents: price_in_cents - @standard_ticket_price_in_cents}
   end
 
-  # defp publish_price_changed() do
-  #   DomainEvent.price_changed(1_000)
-  #   |> EventBus.publish()
-  # end
+  defp publish_price_changed(price_in_cents) do
+    DomainEvent.price_changed(price_in_cents)
+    |> EventBus.publish()
+  end
 end
