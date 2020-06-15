@@ -1,21 +1,17 @@
 defmodule DddExTickets.DomainEvent do
   alias DddExTickets.DomainEvent
 
-  defstruct name: nil
+  defstruct name: nil, content: nil
 
-  defp new(name) do
-    %DomainEvent{name: name}
+  defp new(name, content) do
+    %DomainEvent{name: name, content: content}
   end
 
-  def venue_changed do
-    new(:venue_changed)
+  def seat_reserved(seat_number) do
+    new(:seat_reserved, seat_number)
   end
 
-  def seat_reserved do
-    new(:seat_reserved)
-  end
-
-  def seat_released do
-    new(:seat_released)
+  def seat_released(seat_number) do
+    new(:seat_released, seat_number)
   end
 end

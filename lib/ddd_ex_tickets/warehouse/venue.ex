@@ -54,11 +54,11 @@ defmodule DddExTickets.Warehouse.Venue do
         _from,
         %Venue{available: available, reserved: reserved} = state
       ) do
-    {available, reserved} =
+    {seat, available, reserved} =
       {available, reserved}
       |> move_seat_from_to()
 
-    publish_seat_reserved()
+    publish_seat_reserved(seat)
     state = %{state | available: available, reserved: reserved}
     {:reply, :ok, state}
   end
@@ -68,30 +68,30 @@ defmodule DddExTickets.Warehouse.Venue do
         _from,
         %Venue{available: available, reserved: reserved} = state
       ) do
-    {reserved, available} =
+    {seat, reserved, available} =
       {reserved, available}
       |> move_seat_from_to()
 
-    publish_seat_released()
+    publish_seat_released(seat)
     state = %{state | available: available, reserved: reserved}
     {:reply, :ok, state}
   end
 
   # ------- Implementation
 
-  defp publish_seat_reserved() do
-    DomainEvent.seat_reserved()
+  defp publish_seat_reserved(seat) do
+    DomainEvent.seat_reserved(seat)
     |> EventBus.publish()
   end
 
-  defp publish_seat_released() do
-    DomainEvent.seat_released()
+  defp publish_seat_released(seat) do
+    DomainEvent.seat_released(seat)
     |> EventBus.publish()
   end
 
   defp move_seat_from_to({from, to}) do
     [seat | from] = from
     to = [seat | to]
-    {from, to}
+    {seat, from, to}
   end
 end
