@@ -34,6 +34,7 @@ defmodule DddExTickets.Sales.Transaction do
   @impl true
   def handle_info(%DomainEvent{name: :seat_released}, state) do
     state = remove_seat(state)
+    publish_price_changed(state.price_in_cents)
     {:noreply, state}
   end
 

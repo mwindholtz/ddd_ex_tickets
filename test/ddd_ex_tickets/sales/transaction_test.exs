@@ -27,6 +27,7 @@ defmodule DddExTickets.Sales.TransactionTest do
       {:noreply, state} = Transaction.handle_info(domain_event, state)
 
       assert state.price_in_cents == 30_000
+      assert_receive %DomainEvent{name: :price_changed, content: 30_000}
     end
 
     test "handle_info(%DomainEvent{name: :price_changed} ignored" do
