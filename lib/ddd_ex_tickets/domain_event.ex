@@ -8,6 +8,10 @@ defmodule DddExTickets.DomainEvent do
   end
 
   def venue_changed do
-    %DomainEvent{name: :venue_changed}
+    new(:venue_changed)
+  end
+
+  def seat_reserved do
+    new(:seat_reserved)
   end
 end
