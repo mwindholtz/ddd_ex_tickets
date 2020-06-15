@@ -58,7 +58,7 @@ Ongoing Communication between domain experts and the technical team is the key t
 DDD is a continuous refinment of the model of the system shared between tech and domain experts.
 When a new concept is found, it is defined and named, and becomes part of the code.
 The code must change to reflect the unfolding understanding of the concepts in the problem.
-
+Modeling is iterative and ongoing as new understaning is developed by the whole team.
 
 ### Stratigic Patterns
 These patterns help organize large scale parts of a complicated domain.
