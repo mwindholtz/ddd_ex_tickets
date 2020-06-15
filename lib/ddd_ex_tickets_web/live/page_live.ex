@@ -28,19 +28,19 @@ defmodule DddExTicketsWeb.PageLive do
 
   # DomainEvents -----------------------------------------------------
   @impl true
-  def handle_info(%DomainEvent{name: :seat_reserved}, state) do
-    {:noreply, refresh(state)}
+  def handle_info(%DomainEvent{name: :seat_reserved}, socket) do
+    {:noreply, refresh(socket)}
   end
 
   @impl true
-  def handle_info(%DomainEvent{name: :seat_released}, state) do
-    {:noreply, refresh(state)}
+  def handle_info(%DomainEvent{name: :seat_released}, socket) do
+    {:noreply, refresh(socket)}
   end
 
   # Private Implementation -------------------------------------------
 
-  defp refresh(state) do
-    state
+  defp refresh(socket) do
+    socket
     |> assign(remaining_count: Venue.available())
     |> assign(results: Venue.reserved_seats())
   end

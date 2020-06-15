@@ -2,6 +2,8 @@ defmodule DddExTicketsWeb.PageLiveTest do
   use DddExTicketsWeb.ConnCase
 
   import Phoenix.LiveViewTest
+  alias DddExTicketsWeb.PageLive
+  alias DddExTickets.DomainEvent
 
   @venue_module DddExTickets.Warehouse.Venue
   setup do
@@ -26,6 +28,24 @@ defmodule DddExTicketsWeb.PageLiveTest do
     {:ok, page_live, _disconnected_html} = live(conn, "/")
     assert render(page_live) =~ "Remaining: 29"
   end
+
+  test "handle_info(%DomainEvent{name: :seat_released}" do
+    socket = %Phoenix.LiveView.Socket{}
+    domain_event = DomainEvent.seat_released(1)
+
+    assert {:noreply, socket} = PageLive.handle_info(domain_event, socket)
+
+    assert socket.assigns == %{remaining_count: 30, results: []}
+  end
+
+  # test "handle_info(%DomainEvent{name: :seat_reserved}" do
+  #   socket = %Phoenix.LiveView.Socket{}
+  #   domain_event = DomainEvent.seat_reserved(1)
+
+  #   assert {:noreply, socket} = PageLive.handle_info(domain_event, socket)
+
+  #   assert socket.assigns == %{remaining_count: 30, results: []}
+  # end
 
   defp wait_for_venue_to_restart do
     case Process.whereis(@venue_module) do
