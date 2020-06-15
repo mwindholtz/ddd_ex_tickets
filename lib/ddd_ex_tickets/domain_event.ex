@@ -14,4 +14,8 @@ defmodule DddExTickets.DomainEvent do
   def seat_released(seat_number) do
     new(:seat_released, seat_number)
   end
+
+  def price_changed(new_price_in_cents) do
+    new(:price_changed, new_price_in_cents)
+  end
 end

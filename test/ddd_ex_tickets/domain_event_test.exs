@@ -17,4 +17,12 @@ defmodule DddExTickets.DomainEventTest do
     assert result.name == :seat_released
     assert result.content == 3
   end
+
+  test "price_changed" do
+    # When
+    result = DomainEvent.price_changed(1_000)
+    assert %DomainEvent{} = result
+    assert result.name == :price_changed
+    assert result.content == 1_000
+  end
 end

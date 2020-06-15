@@ -5,6 +5,7 @@ defmodule DddExTickets.Application do
 
   use Application
   alias DddExTickets.Warehouse.Venue
+  alias DddExTickets.Sales.Transaction
 
   def start(_type, _args) do
     children = [
@@ -16,7 +17,8 @@ defmodule DddExTickets.Application do
       DddExTicketsWeb.Endpoint,
       # Start a worker by calling: DddExTickets.Worker.start_link(arg)
       # {DddExTickets.Worker, arg}
-      {Venue, %Venue{}}
+      {Venue, %Venue{}},
+      {Transaction, %Transaction{}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
