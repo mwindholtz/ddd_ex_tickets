@@ -39,9 +39,10 @@ I recommend building a small application with DDD patterns, in order to learn.  
 #### Symptoms of poor a Domain Model
 Lacking a useful Domain Model has some of the following symptoms.
 - It's hard for the Domain Experts to understand tech team's proposed solutions
-- Technical team uses techie words when talking to Domain Experts. For example: table, fields, schemas, locks.
+- Domain Experts awkwardly try to use tech terms to express themselves
+- Technical team uses techie words when talking to Domain Experts. For example: table, fields, schemas, locks
 - Slowing Code delivery
-- Miscommunicated requirements causing code defects.
+- Miscommunicated requirements causing code defects
 - Large, awkward setup code for unit tests
 - Long running unit tests.  Greater than > 5 minutes (Elixir is fast and concurrent, so tests should be fast)
 
