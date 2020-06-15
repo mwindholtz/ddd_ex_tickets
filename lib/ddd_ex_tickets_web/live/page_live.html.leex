@@ -4,13 +4,14 @@
 <section class="phx-hero">
   <h1>Tickets</h1>
   <div>
-    <h1>Remaining: <%= @remaining_count %></h1>
+    <h2>Price: <%= @price_in_cents %></h2>
+    <h2>Remaining: <%= @remaining_count %></h2>
   </div>
 </section>
 
 
 <section class="phx-hero">
-  <h1>Tickets Requested</h1>
+  <h1>Tickets Reserved</h1>
   <div>
     <button phx-click="dec">-</button>
     <button phx-click="inc">+</button>

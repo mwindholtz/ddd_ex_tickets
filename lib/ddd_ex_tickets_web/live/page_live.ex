@@ -11,6 +11,8 @@ defmodule DddExTicketsWeb.PageLive do
   @impl true
   def mount(_params, _session, socket) do
     :ok = EventBus.subscribe()
+    socket = assign(socket, :price_in_cents, Money.to_string(Money.new(0)))
+
     {:ok, refresh(socket)}
   end
 
@@ -41,7 +43,7 @@ defmodule DddExTicketsWeb.PageLive do
   def handle_info(%DomainEvent{name: :price_changed, content: new_price_in_cents}, socket) do
     socket =
       socket
-      |> assign(:price_in_cents, new_price_in_cents)
+      |> assign(:price_in_cents, Money.to_string(new_price_in_cents))
 
     {:noreply, socket}
   end

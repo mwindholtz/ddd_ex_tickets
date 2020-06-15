@@ -5,9 +5,9 @@ defmodule DddExTickets.Sales.Transaction do
   alias DddExTickets.EventBus
   alias DddExTickets.DomainEvent
 
-  defstruct price_in_cents: 0
+  defstruct price_in_cents: Money.new(0)
 
-  @standard_ticket_price_in_cents 10_000
+  @standard_ticket_price_in_cents Money.new(10_000)
 
   # Client Interface ---------------------
   def start_link(state \\ %Transaction{}) do
@@ -46,11 +46,13 @@ defmodule DddExTickets.Sales.Transaction do
   # Implementation ---------------------
 
   def add_seat(%Transaction{price_in_cents: price_in_cents} = state) do
-    %{state | price_in_cents: price_in_cents + @standard_ticket_price_in_cents}
+    price = Money.add(price_in_cents, @standard_ticket_price_in_cents)
+    %{state | price_in_cents: price}
   end
 
   def remove_seat(%Transaction{price_in_cents: price_in_cents} = state) do
-    %{state | price_in_cents: price_in_cents - @standard_ticket_price_in_cents}
+    price = Money.subtract(price_in_cents, @standard_ticket_price_in_cents)
+    %{state | price_in_cents: price}
   end
 
   defp publish_price_changed(price_in_cents) do

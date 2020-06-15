@@ -11,23 +11,25 @@ defmodule DddExTickets.Sales.TransactionTest do
     end
 
     test "handle_info(%DomainEvent{name: :seat_reserved}" do
-      state = %Transaction{price_in_cents: 0}
+      state = %Transaction{price_in_cents: Money.new(0)}
       domain_event = DomainEvent.seat_reserved(1)
 
       {:noreply, state} = Transaction.handle_info(domain_event, state)
 
-      assert state.price_in_cents == 10_000
-      assert_receive %DomainEvent{name: :price_changed, content: 10_000}
+      assert state.price_in_cents == Money.new(10_000)
+      assert_receive %DomainEvent{name: :price_changed, content: price}
+      assert Money.new(10_000) == price
     end
 
     test "handle_info(%DomainEvent{name: :seat_released}" do
-      state = %Transaction{price_in_cents: 40_000}
+      state = %Transaction{price_in_cents: Money.new(40_000)}
       domain_event = DomainEvent.seat_released(1)
 
       {:noreply, state} = Transaction.handle_info(domain_event, state)
 
-      assert state.price_in_cents == 30_000
-      assert_receive %DomainEvent{name: :price_changed, content: 30_000}
+      assert state.price_in_cents == Money.new(30_000)
+      assert_receive %DomainEvent{name: :price_changed, content: money}
+      assert Money.new(30_000) == money
     end
 
     test "handle_info(%DomainEvent{name: :price_changed} ignored" do
