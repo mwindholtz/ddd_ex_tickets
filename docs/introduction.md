@@ -111,7 +111,7 @@ This is key to robustness and scalability.
 Aggregates can be implemented with Elixir GenServers.
 In the **DddExTickets** example
 - [Venue](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/warehouse/venue.ex) is an Aggregate that mananges the allocation of Seat ValueObjects.
-- [Sales.Transaction](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_002/lib/ddd_ex_tickets/sales/transaction.ex) is an Aggregate that calculate the sales price without knowing about the Venue.
+- [Sales.Transaction](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_002/lib/ddd_ex_tickets/sales/transaction.ex) is an Aggregate that calculates the sales price without knowing about the Venue.
 
 #### DomainEvent
 A [DomainEvent](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/domain_event.ex) is and event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available**
