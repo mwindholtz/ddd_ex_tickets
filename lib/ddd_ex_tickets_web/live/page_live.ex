@@ -28,7 +28,12 @@ defmodule DddExTicketsWeb.PageLive do
 
   # DomainEvents -----------------------------------------------------
   @impl true
-  def handle_info(%DomainEvent{name: :venue_changed}, state) do
+  def handle_info(%DomainEvent{name: :seat_reserved}, state) do
+    {:noreply, refresh(state)}
+  end
+
+  @impl true
+  def handle_info(%DomainEvent{name: :seat_released}, state) do
     {:noreply, refresh(state)}
   end
 
