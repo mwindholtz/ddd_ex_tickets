@@ -21,14 +21,13 @@ Domain Driven Design is a kit of thinking tools for building complex systems and
 - Tactical Patterns: code level separating the core from non-core.
 - Vision and Values.
 
-DDD is mostly about organizing the concepts of you problem.  One part of that is implementing those concepts in code.  But coding is not the biggest concern.   Communicating is the biggest concern.
+DDD is mostly about organizing the concepts of your problem.  One part of that is implementing those concepts in code.  But coding is not the biggest concern.   Communicating is the biggest concern.  We code in a way that makes the communicating easier.
 
 #### Architecture and Design
 - **Architecture** supports the full range technical and business needs.  One goal in architecture is to provide a safe space to express the core design
  - **Design** is the place in the architecture where the core behavior of the application is represented.  The core behavior is the reason the application is being created.  This is where the system provides it's value.
 
 ### How do I know I need it?
-
 DDD is intended for complex applications and systems.   Using full DDD on simple applications can make the app harder to understand and maintain.
 
 But sometimes simple applications grow-up to become complicted applications.  The point at which DDD becomes helpful is often recognized later than it should be when the application has alreaday become complicted.
