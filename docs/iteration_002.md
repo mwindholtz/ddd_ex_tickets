@@ -8,5 +8,6 @@ Adds a second independent Aggregate:  SalesTransation
 
 ### Coding moves taken
 #### As a Ticket Shopper, I want to see price total.
-This will eventually require a Sales.Transaction that listens for events :seat_registered, and :seat_released.   Currently the code only publishes :venue_changed.
-- The first step is to replace :venue_changed with the two more specific domain events.
+- Replace :venue_changed with the two more specific domain events.
+- Have Sale.Transaction listen to the :reserve_seat, and :release_seat domain events and track the price
+- Sale.Transaction publishes :price_changed when needed

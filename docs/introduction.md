@@ -9,19 +9,21 @@ Adaquately explaining DDD in a free flowing discussion in under an hour is proba
 Even a post like this will not be able to explain the full depth of the goals and value of DDD.
 
 #### Goal
-This post will be an introductory overview of DDD.
+This post is an introductory overview of DDD.
 And I'll follow-up with a code example of implementing a super simplified app in Elixir with DDD-Aggragates.
 
 Lets get started ...
 
 ### What is DDD?
 Domain Driven Design is a kit of thinking tools for building complex systems and applications.  It includes:
+- Communication Techniques: sharing and understanding what is important.
 - Stratigic Patterns: big parts and how they relate to each other.
 - Tactical Patterns: code level separating the core from non-core.
-- Communication Techniques: sharing and understanding what is important.
 - Vision and Values.
 
-#### Concerns of Architecture and Design
+DDD is mostly about organizing the concepts of you problem.  One part of that is implementing those concepts in code.  But coding is not the biggest concern.   Communicating is the biggest concern.
+
+#### Architecture and Design
 - **Architecture** supports the full range technical and business needs.  One goal in architecture is to provide a safe space to express the core design
  - **Design** is the place in the architecture where the core behavior of the application is represented.  The core behavior is the reason the application is being created.  This is where the system provides it's value.
 
@@ -91,7 +93,7 @@ In an insurance application for example, the concept *Policy* may mean different
 Words defined in the Ubiqutious Language should be directly represented in the structs and functions of our Elixir code.  That is why we cann it *"Ubiqutious"*.   The names of these things are in the Domain and in the code.   And yes, this takes some skill development to do well.  The tactical patterns are helpful for this.
 
 ### Tactical Patterns
-The Tactical Patterns are where the Model meets the Code.  Tactical patterns are how we can make the Ubiqutious Language show up in our code modeuls and functions.
+The Tactical Patterns are where the Model meets the Code.  Tactical patterns are how we can make the Ubiqutious Language show up in our code modeuls and functions.  It's important to understand that no one Model is "Right".  A Model is made to be useful.   And we should explore multiple Models before jumping into the coding.  Also the Model *will change*  as you learn more about the problem.  The tactical patterns should help make those changes easier.
 
 #### Value Object
 ValueObject is immutable data, the value of which is only set during construction. An example is a DateTime.  This is more helpful in an Object Oriented language, since in Elixir all data structures are immutable.
@@ -107,7 +109,9 @@ An Aggregate is one Entity, or a tree of Entities with one Entity at the root.  
 Much of DDD modeling deals with finding, and naming Aggregates and decoupling Aggregates from each other.
 This is key to robustness and scalability.
 Aggregates can be implemented with Elixir GenServers.
-In the **DddExTickets** example [Venue](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/warehouse/venue.ex) is an Aggregate that mananges the allocation of Seat ValueObjects.
+In the **DddExTickets** example
+- [Venue](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/warehouse/venue.ex) is an Aggregate that mananges the allocation of Seat ValueObjects.
+- [Sales.Transaction](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_002/lib/ddd_ex_tickets/sales/transaction.ex) is an Aggregate that calculate the sales price without knowing about the Venue.
 
 #### DomainEvent
 A [DomainEvent](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/domain_event.ex) is and event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available**
