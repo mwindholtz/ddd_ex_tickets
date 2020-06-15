@@ -22,48 +22,56 @@ Domain Driven Design is a kit of thinking tools for building complex systems and
 - Vision and Values: Help in times of stress.
 
 #### Concerns of Architecture and Design
-- *Architecture* is about support for the full range technical and business needs.  One goal in architecture is to provide a safe space to express the core design
- - *Design* is the place in the architecture where the core behavior of the application is represented.  The core behavior is the reason the application is being created.
-
+- **Architecture** supports the full range technical and business needs.  One goal in architecture is to provide a safe space to express the core design
+ - **Design** is the place in the architecture where the core behavior of the application is represented.  The core behavior is the reason the application is being created.  This is where the system provides it's value.
 
 ### How do I know I need it?
 
 DDD is intended for complex applications and systems.   Using full DDD on simple applications is usually not helpful and can make the app harder to understand and maintain.
 
-But sometimes simple applications grow-up to become complicted applications.  The point where DDD becomes recognized as heplful is often later than it should be.
+But sometimes simple applications grow-up to become complicted applications.  The point at which DDD becomes heplful is often recognized later than it should be.
 
-Also, *Learning* the Tactical patterns of DDD is easier when building a small application.  And while that is good for learning it may not be best for maintaining the simple application.
+However, *Learning* the Tactical patterns of DDD is easier when building a small application.  And while a simple application is good for learning DDD may not be best for maintaining the simple application.
 
-I recommend building a small application with DDD patterns, in order to learn.   But don't send that to production.  That what the [DDDExTickets](https://github.com/mwindholtz/ddd_ex_tickets) example is for.
+I recommend building a small application with DDD patterns, in order to learn.   But don't send that to production. [DDDExTickets](https://github.com/mwindholtz/ddd_ex_tickets) example is an attempt to show parts of the DDD tactical patterns in one possible implementation.
 
-Lacking a useful Domain Model has some of the following symptoms.
 
 #### Symptoms of poor a Domain Model
+Lacking a useful Domain Model has some of the following symptoms.
 - Slowing Code delivery
 - Unacceptable code defects
 - Large, awkward setup code for unit tests
 - Long running unit tests.  Greater than > 5 minutes (Elixir is fast and concurrent, so tests should be fast)
 
-A weak point of some Agile software processes is that they encourage a style of feature based development that layers features on top of features without looking into the deeper core of the problem space.  This is called **Featuritus**.   Getting the most points done per interation without continually developing the core leads to confusion.
+A weak point of some *Agile* software processes is that they encourage a style of feature based development that layers features on top of features without looking into the deeper core of the problem space.  This is called **Featuritus**.   Getting the most points done per interation without continually developing the core leads to confusion in the design.
 
 It is simpler to understand business constraints and rules when they are in the core domain model than to handle them on the edges in feature code.
 It is faster in the *short term* to *build* one feature at a time, and to build the rules and constraints in one feature at a time.  But this leaves duplicate concepts and hard to locate logic around the edges of the application.
 
 ## Parts of DDD
 ### Stratigic Patterns
-These patterns help organize large scale parts of a complecated domain.
+These patterns help organize large scale parts of a complicated domain.
 We want to highlight when we are dealing with the **Problem Space** and when we are dealing with the **Solution Space**
 
 #### Core Domain, Sub-Domain
-The an area in the **Problem Space**.  A sphere of the knowledge ....
-The *Core Domain* is the most important part of the problem we are trying to solve.
- Examples could be areas like: TicketSales Domain, SeatAllocation SubDomain, and Billing SubDomain
+These are in the **Problem Space** in the real world.
+A **Domain** is a sphere of the knowledge.
+The **Core Domain** is the most important part of the problem we are trying to solve.
+ Examples could be areas like:
+- TicketSales Domain
+- SeatAllocation SubDomain
+- Billing SubDomain
+A **Sub Domain** is an area of knowledge that is not the main value in the application
 
 #### Bounded Context
-The Bounded Context is in the **Solution Space**.  We name modeling concepts within a particular *Bounded Context*.  We often see these align with the departments in a company. Example Bounded Contexts: Sales, Warehousing, and Billing
+The **Bounded Context** is in the **Solution Space**.  We name modeling concepts within a particular *Bounded Context*.  We often see these align with the departments in a company. Example Bounded Contexts:
+- Sales
+- Warehousing
+- Billing
+Typically we want one team, and one repo per bounded context.  Within the BoundedContext the Model, and Ubiqutious Language evolves based on the conversations between the technical team and the domain experts.
 
 #### Context Map
-A Context Map will show the relationships between Bounded Contexts.  This helps us undersand flow of Model changes among the connected Bounded Conexts.
+A Context Map shows the relationships between Bounded Contexts.  This helps us undersand flow of Model changes among the connected Bounded Conexts.  Sometimes a change in one Bounded Context effects another Bounded Context.   Sometime it does not.  When the relationships are mapped you can see the potential effect of model changes on the entier system.
 
 #### Ubiqutious Language
 **Ubiqutious Language** is a language that we define.  We use words that the domain Expert uses in the Problem Space and define those worked to mean something percise within the area of the BoundedContext.
@@ -71,10 +79,10 @@ In an insurance application for example, the concept *Policy* may mean different
 Words defined in the Ubiqutious Language should be directly represented in the structs and functions of our Elixir code.  That is why we cann it *"Ubiqutious"*.   The names of these things are in the Domain and in the code.   And yes, this takes some skill development to do well.  The tactical patterns are helpful for this.
 
 ### Tactical Patterns
-The Tactical Patterns is where the Model meets the Code.  Tactical patterns are how we can make the Ubiqutious Language show up in our code modeuls and functions.
+The Tactical Patterns are where the Model meets the Code.  Tactical patterns are how we can make the Ubiqutious Language show up in our code modeuls and functions.
 
 #### Value Object
-ValueObject is immutable data the value of which is only set during construction, like a DateTime.  This is more helpful in an Object Oriented language, since in Elixir all data structures are immutable.
+ValueObject is immutable data, the value of which is only set during construction. An example is a DateTime.  This is more helpful in an Object Oriented language, since in Elixir all data structures are immutable.
 
 #### Entity
 An Entity is longer lived data that has an identity, and can change it's properties over time.
