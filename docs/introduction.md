@@ -124,4 +124,5 @@ A [DomainEvent](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/
 
 ## Next
 Next we look at a code example of putting some of these ideas together.
+But it's important to keep in mind that the main focus of DDD is communication, and modeling in a ubiqutous language.   The focus of the code is to reflect the model and ubiqutous language.
 [iteration_001](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/docs/iteration_001.md)
