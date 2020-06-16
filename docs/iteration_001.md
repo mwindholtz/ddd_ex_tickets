@@ -25,6 +25,8 @@ To keep this very simple, the MVP will have hardcoded seats and costs (for now)
 
 The app now has one Aggregate (Venue) that can be updated and lets others know when it has changed.
 
+
+[Event Diagram](https://raw.githubusercontent.com/mwindholtz/ddd_ex_tickets/iteration_002/docs/DDD%20tickets%20001.png?token=AAAKBJ6EW2KHQHLYP6HPFTC66JJJ6)
 ### Coding moves taken
 #### As a Ticket Shopper, I want to see the number of tickets available.
 - created a default phoenix live_view application [code](https://github.com/mwindholtz/ddd_ex_tickets/tree/1a1794ac3b1b66d266ac1eed42cf798405ef194e).
