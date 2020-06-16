@@ -2,10 +2,10 @@
 
 ## Introduction
 
-I had a conversation with the good folks at Elixir Wizards about Domain Driven Design.
+I had a conversation with the good folks at [Elixir Wizards](https://podcasts.google.com/?feed=aHR0cHM6Ly9wb2RjYXN0LnNtYXJ0bG9naWMuaW8vcnNz&ved=2ahUKEwjguPeuhofqAhWvRTABHXLtC8AQ4aUDegQIARAC&hl=en) about [Domain Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html).
 It was a lot of fun, but I get the feeling that wasn't as clear as it could have been.
 
-Adaquately explaining DDD in a free flowing discussion in under an hour is probably not possible.
+Explaining All of DDD in a free flowing discussion in under an hour is probably not possible.
 Even a post like this will not be able to explain the full depth of the goals and value of DDD.
 
 #### Goal
@@ -28,17 +28,16 @@ DDD is mostly about organizing the concepts of your problem.  One part of that i
  - **Design** is the place in the architecture where the core behavior of the application is represented.  The core behavior is the reason the application is being created.  This is where the system provides it's value.
 
 ### How do I know I need it?
-DDD is intended for complex applications and systems.   Using full DDD on simple applications can make the app harder to understand and maintain.
+DDD is intended for complex applications and systems. Using full DDD on simple applications can make the app harder to understand and maintain.
 
 But sometimes simple applications grow-up to become complicted applications.  The point at which DDD becomes helpful is often recognized later than it should be when the application has alreaday become complicted.
 
-However, *Learning* the Tactical patterns of DDD is easier when building a small application.  A simple application can be good for learning DDD.
+However, *Learning* the Tactical patterns (i.e. coding patterns) of DDD is easier when building a small application.  A simple application can be good for learning DDD.
 
 I recommend building a small application with DDD patterns, in order to learn.   But don't send that to production. [DDDExTickets](https://github.com/mwindholtz/ddd_ex_tickets) example is an attempt to show parts of the DDD tactical patterns in one possible implementation.
 
-
 #### Symptoms of poor a Domain Model
-Lacking a useful Domain Model has some of the following symptoms.
+Lacking a useful Domain Model has the following symptoms.
 - It's hard for the Domain Experts to understand tech team's proposed solutions
 - Domain Experts awkwardly try to use tech terms to express themselves
 - Technical team uses techie words when talking to Domain Experts. For example: table, fields, schemas, locks
