@@ -112,7 +112,7 @@ In the **DddExTickets** example
 - [Sales.Transaction](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_002/lib/ddd_ex_tickets/sales/transaction.ex) is an Aggregate that calculates the sales price without knowing about the Venue.
 
 #### DomainEvent
-A [DomainEvent](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/domain_event.ex) is and event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available**
+A [DomainEvent](https://github.com/mwindholtz/ddd_ex_tickets/blob/iteration_001/lib/ddd_ex_tickets/domain_event.ex) is an event that the Domain Expert cares about from the real-world.  It is expressed in past-tense to show that it already happened. **Seat Reserverd**,  **TicketPurchased**, **Seat Available**
 
 
 ### Vision and Values: Help in times of stress.
