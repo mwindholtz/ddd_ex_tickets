@@ -7,6 +7,8 @@ To keep this very simple, the MVP will have hardcoded seats and costs (for now)
 - The number of seats is set at 30
 - All tickets will be priced at $100/seat
 
+* On a real project there would be multipe GenServers using via tuples.  This example is trying to keep that part simple to show the interaction between Aggregates.
+
 ## Stories
 #### Backlog
 - [x] As a Ticket Shopper, I want to see the number of tickets available.
